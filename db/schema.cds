@@ -9,8 +9,8 @@ type NoOfBooks : Integer;
 entity Authors {
     key ID          : UUID;
         name        : String(100); // Length can be defined between ()
-        dateofBirth : Date;
-        dateofDeath : Date;
+        dateOfBirth : Date;
+        dateOfDeath : Date;
 }
 
 define entity Books {
