@@ -11,11 +11,14 @@ entity Authors {
         name        : String(100); // Length can be defined between ()
         dateOfBirth : Date;
         dateOfDeath : Date;
+        books       : Association to many Books
+                          on books.author = $self;
 }
 
 define entity Books {
     key ID          : UUID;
         title       : String(255);
+        author      : Association to Authors;
         genre       : Genre;
         publCountry : String(3);
         stock       : NoOfBooks;

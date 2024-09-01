@@ -22,7 +22,7 @@
         "[development]": {
           "kind": "sqlite",
           "credentials": {
-            "url": "db.sqlite"
+            "url": ":memory:"
           }
         }
       }
