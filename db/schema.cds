@@ -1,13 +1,17 @@
 // Namespaces are automatically applied to all relevant names in a file, e.g. "sapcap.bookshop.Authors", or "sapcap.bookshop.Books"
 namespace sapcap.bookshop;
 
+using {
+    cuid,
+    managed
+} from '@sap/cds/common';
+
 // Simple Types can be defined either using sintax "define type" or "type"
 // Types can be defined before entity definition which uses this type
 type NoOfBooks : Integer;
 
 // Entities can be defined either using "define entity" or "entity"
-entity Authors {
-    key ID          : UUID;
+entity Authors : cuid, managed {
         name        : String(100); // Length can be defined between ()
         dateOfBirth : Date;
         dateOfDeath : Date;
@@ -15,8 +19,7 @@ entity Authors {
                           on books.author = $self;
 }
 
-define entity Books {
-    key ID          : UUID;
+define entity Books : cuid, managed {
         title       : String(255);
         author      : Association to Authors;
         genre       : Genre;
