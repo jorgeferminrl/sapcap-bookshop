@@ -3,7 +3,10 @@ namespace sapcap.bookshop;
 
 using {
     cuid,
-    managed
+    managed,
+    Currency,
+    Country,
+    sap.common.CodeList
 } from '@sap/cds/common';
 
 // Simple Types can be defined either using sintax "define type" or "type"
@@ -12,21 +15,22 @@ type NoOfBooks : Integer;
 
 // Entities can be defined either using "define entity" or "entity"
 entity Authors : cuid, managed {
-        name        : String(100); // Length can be defined between ()
-        dateOfBirth : Date;
-        dateOfDeath : Date;
-        books       : Association to many Books
-                          on books.author = $self;
+    name        : String(100); // Length can be defined between ()
+    dateOfBirth : Date;
+    dateOfDeath : Date;
+    epoch       : Association to Epochs;
+    books       : Association to many Books
+                      on books.author = $self;
 }
 
 define entity Books : cuid, managed {
-        title       : String(255);
-        author      : Association to Authors;
-        genre       : Genre;
-        publCountry : String(3);
-        stock       : NoOfBooks;
-        price       : Price;
-        isHardcover : Boolean;
+    title       : localized String(255);
+    author      : Association to Authors;
+    genre       : Genre;
+    publCountry : Country;
+    stock       : NoOfBooks;
+    price       : Price;
+    isHardcover : Boolean;
 
 }
 
@@ -35,7 +39,7 @@ define entity Books : cuid, managed {
 // Types can be defined after entity definition which uses this type
 type Price {
     amount   : Decimal;
-    currency : String(3);
+    currency : Currency;
 }
 
 // Enumarations
@@ -45,6 +49,10 @@ type Genre     : Integer enum {
     non_fiction = 2;
 }
 
+// CodeList
+entity Epochs: CodeList {
+    key ID : Integer;
+}
 
 // Hint
 // Naming conventions: It is recommended to capitalize type names in the same way as entity names.
