@@ -54,6 +54,13 @@ entity Epochs: CodeList {
     key ID : Integer;
 }
 
+annotate Books with {
+    modifiedAt @odata.etag
+}
+
+annotate Authors with {
+    modifiedAt @odata.etag
+}
 // Hint
 // Naming conventions: It is recommended to capitalize type names in the same way as entity names.
 // In contrast to entity names, however, use the singular form for type names (e.g. Price).
