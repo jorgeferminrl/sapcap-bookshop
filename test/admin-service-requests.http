@@ -5,47 +5,13 @@
 
 
 ### ------------------------------------------------------------------------
-# Get Service Document
-GET {{baseUrl}}/cat
-
-
-### ------------------------------------------------------------------------
-# Get Service Metadata Document
-GET {{baseUrl}}/cat/$metadata
-
-
-### ------------------------------------------------------------------------
-# Get all books with language en
-GET {{baseUrl}}/cat/Books
-Accept-Language: en
-
-
-### ------------------------------------------------------------------------
-# Get all books with language de
-GET {{baseUrl}}/cat/Books
-Accept-Language: de
-
-
-### ------------------------------------------------------------------------
-# Get all authors with language en
-GET {{baseUrl}}/cat/Authors
-Accept-Language: en
-
-
-### ------------------------------------------------------------------------
-# Get all authors with language de
-GET {{baseUrl}}/cat/Authors
-Accept-Language: de
-
-
-### ------------------------------------------------------------------------
-# Create a new author
-POST {{baseUrl}}/cat/Authors
+# Create a new author with the date of death before the date of birth.
+POST {{baseUrl}}/admin/Authors
 Content-Type: application/json
 
 {
   "name": "Friedrich Schiller",
   "dateOfBirth": "1759-11-10",
-  "dateOfDeath": "1805-05-09",
+  "dateOfDeath": "1705-05-09", 
   "epoch": {"ID": 120}
 }
