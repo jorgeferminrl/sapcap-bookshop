@@ -5,13 +5,5 @@
 
 
 ### ------------------------------------------------------------------------
-# Create a new author with the date of death before the date of birth.
-POST {{baseUrl}}/admin/Authors
-Content-Type: application/json
-
-{
-  "name": "Friedrich Schiller",
-  "dateOfBirth": "1759-11-10",
-  "dateOfDeath": "1705-05-09", 
-  "epoch": {"ID": 120}
-}
+# Get al books
+GET {{baseUrl}}/cat/Books
